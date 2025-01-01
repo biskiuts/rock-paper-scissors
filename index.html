@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RPG Rock Paper Scissors</title>
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>RPG ROCK PAPER SCISSORS</h1>
+    </header>
+    <main class="container">
+      <div class="choices">
+        <button class="circle" id="warrior">Warrior</button>
+        <button class="circle" id="mage">Mage</button>
+        <button class="circle" id="archer">Archer</button>
+      </div>
+      <div class="result">
+        <p>Choose an option above to play!</p>
+      </div>
+      <div class="score">
+        <p id="playerWins">Player: 0</p>
+        <p id="computerWins">Computer: 0</p>
+      </div>
+    </main>
 
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
