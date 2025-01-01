@@ -1,71 +1,70 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
-    const randomNumber = Math.floor(Math.random() * 3);
-    if (randomNumber === 0) {
-        return "warrior";
-    } else if (randomNumber === 1) {
-        return "mage";
-    } else {
-        return "archer";
-    }
+  const randomNumber = Math.floor(Math.random() * 3);
+  if (randomNumber === 0) {
+    return "warrior";
+  } else if (randomNumber === 1) {
+    return "mage";
+  } else {
+    return "archer";
+  }
 }
 
-function getHumanChoice() {
-    const userInput = prompt(`Select your class (Warrior, Mage, or Archer):`).toLowerCase();
-    if (userInput === "warrior" || userInput === "mage" || userInput === "archer") {
-        return userInput;
-   } else {
-        console.log(`Invalid class. Please choice your class "Warrior", "Mage", or "Archer".`);
-        return getHumanChoice();
-   }
+function playRound(humanChoice) {
+  const computerChoice = getComputerChoice();
+
+  let resultMessage;
+
+  if (humanChoice === computerChoice) {
+    resultMessage = `It's a tie! Both chose ${capitalize(humanChoice)}`;
+  } else if (
+    (humanChoice === "warrior" && computerChoice === "archer") ||
+    (humanChoice === "mage" && computerChoice === "warrior") ||
+    (humanChoice === "archer" && computerChoice === "mage")
+  ) {
+    resultMessage = `You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`;
+    humanScore++;
+  } else {
+    resultMessage = `You lose! ${capitalize(humanChoice)} beaten by ${capitalize(computerChoice)}`;
+    computerScore++;
+  }
+
+  const resultDiv = document.querySelector(".result p");
+  resultDiv.textContent = resultMessage;
+
+  document.getElementById("playerWins").textContent = `Player: ${humanScore}`;
+  document.getElementById("computerWins").textContent = `Computer: ${computerScore}`;
+
+  if (humanScore === 5) {
+    announceWinner("Player");
+  } else if (computerScore === 5) {
+    announceWinner("Computer");
+  }
 }
 
-let humanScore = 0
-let computerScore = 0
-
-function playRound (humanChoice, computerChoice) {
-
-    if (humanChoice === computerChoice) {
-        console.log(`It's a tie! Both chose ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)}`);
-        return "tie";
-    } else if (
-        (humanChoice === "warrior" && computerChoice === "archer") ||
-        (humanChoice === "mage" && computerChoice === "warrior") ||
-        (humanChoice === "archer" && computerChoice === "mage")
-    ) {
-        console.log(`You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}`);
-        humanScore++;
-        return "win";
-    } else {
-        console.log(`You lose! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} beaten by ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}`);
-        computerScore++;
-        return "lose";
-    }
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function announceWinner(winner) {
+  const resultDiv = document.querySelector(".result p");
+  resultDiv.textContent = `${winner} wins the game! Congratulations!`;
 
-playRound(humanSelection, computerSelection);
-
-function playGame() {
-    humanScore = 0;
-    computerScore = 0;
-
-    for (let i = 2; i <=5; i++) {
-        console.log(`Round ${i}`);
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-        console.log(`Scores: You ${humanScore}, Computer ${computerScore}`);
-    }
-
-    if (humanScore > computerScore) {
-        console.log("You win the game!");
-    } else if (humanScore < computerScore) {
-        console.log("You lose the game!");
-    } else {
-        console.log("The game is a tie!");
-    }
+  document.getElementById("warrior").disabled = true;
+  document.getElementById("mage").disabled = true;
+  document.getElementById("archer").disabled = true;
 }
 
-playGame();
+document.getElementById("warrior").addEventListener("click", function () {
+  playRound("warrior");
+});
+
+document.getElementById("mage").addEventListener("click", function () {
+  playRound("mage");
+});
+
+document.getElementById("archer").addEventListener("click", function () {
+  playRound("archer");
+});
