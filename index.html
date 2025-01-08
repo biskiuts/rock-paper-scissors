@@ -7,23 +7,53 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="header">
-      <h1>RPG ROCK PAPER SCISSORS</h1>
+    <header>
+      <h1>
+        <span class="warriorColor">WARRIOR</span>
+        <span class="mageColor">MAGE</span>
+        <span class="archerColor">ARCHER</span>
+      </h1>
+      <p>
+        <span class="warriorColor">Warrior</span> beats <span class="archerColor">Archer</span> ︱
+        <span class="mageColor">Mage</span> beats <span class="warriorColor">Warrior</span> ︱
+        <span class="archerColor">Archer</span> beats <span class="mageColor">Mage</span>
+      </p>
     </header>
-    <main class="container">
-      <div class="choices">
-        <button class="circle" id="warrior">Warrior</button>
-        <button class="circle" id="mage">Mage</button>
-        <button class="circle" id="archer">Archer</button>
+    <main>
+      <div class="playerVsComp">
+        <section class="playerPick">
+          <p></p>
+        </section>
+        <section class="scoreBoard">
+          <div class="badge" id="compLabel">Computer</div>
+          <div class="badge" id="playerLabel">Player</div>
+          <span id="playerWins">0</span>:<span id="compWins">0</span>
+        </section>
+        <section class="compPick">
+          <p></p>
+        </section>
       </div>
+
       <div class="result">
-        <p>Choose an option above to play!</p>
+        <p id="roundResult">First to score 5 points wins</p>
+        <p id="actionResult">Choose your class</p>
       </div>
-      <div class="score">
-        <p id="playerWins">Player: 0</p>
-        <p id="computerWins">Computer: 0</p>
+
+      <div class="choices">
+        <button class="choice" id="warrior">Warrior</button>
+        <button class="choice" id="mage">Mage</button>
+        <button class="choice" id="archer">Archer</button>
+      </div>
+
+      <div class="endGame">
+        <p id="gameResult"></p>
+        <button id="restartBtn"></button>
       </div>
     </main>
+    <footer>
+      Copyright &copy; <span id="currentYear"></span>
+      <a href="https://github.com/biskiuts" target="_blank">biskiuts</a>
+    </footer>
 
     <script src="script.js"></script>
   </body>
