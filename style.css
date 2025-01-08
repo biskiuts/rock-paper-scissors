@@ -1,64 +1,133 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
+  line-height: 1.5;
 }
 
 body {
+  background-color: white;
+  color: black;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-.header {
+header {
+  min-height: 50px;
+  margin-top: 16px;
   text-align: center;
-  width: 100%;
-  padding: 20px 0;
+  font-size: 24px;
+  letter-spacing: 1px;
 }
 
-.header h1 {
-  font-size: 2.5rem;
+.warriorColor {
+  color: #d4af37;
 }
 
-.container {
+.mageColor {
+  color: #4169e1;
+}
+
+.archerColor {
+  color: #228b22;
+}
+main {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  flex: 1;
+}
+
+.playerVsComp {
+  display: flex;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 30px;
+}
+
+.scoreBoard {
+  border: 2px solid gray;
+  width: 30%;
+  margin-top: 32px;
+  border-radius: 15px;
+  padding: 20px;
+  font-size: 32px;
+  position: relative;
+  text-align: center;
+}
+
+.badge {
+  font-size: 14px;
+  position: absolute;
+  padding: 6px 12px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+
+#compLabel {
+  right: 5%;
+  top: 30%;
+}
+
+#playerLabel {
+  left: 5%;
+  top: 30%;
+}
+
+.result {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 24px;
+  font-weight: bold;
+}
+
+#actionResult {
+  font-size: 16px;
 }
 
 .choices {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 24px;
 }
 
-.choices button {
-  background-color: #0a95ff;
-  color: white;
-  border: none;
+.choice {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  font-size: 1rem;
-  font-weight: bold;
+  width: 80px;
+  height: 80px;
+  text-align: center;
   cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  border: 2px solid;
+  transition: all 0.2s ease;
 }
 
-.choices button:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
+.choice:hover {
+  background-color: gray;
+  color: white;
+  border-color: black;
 }
 
-.score {
+.choice:active {
+  transform: scale(0.97);
+}
+
+.endGame {
   display: flex;
-  gap: 30px;
-  font-size: 1.2rem;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+  gap: 10px;
 }
 
-.score p {
-  margin: 0;
-  font-weight: bold;
-  color: #ffcc00;
+#restartBtn {
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 16px;
 }
